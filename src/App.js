@@ -4,36 +4,36 @@ import List from "./Components/List";
 import FormSubmit from "./Components/FormSubmit";
 
 class App extends Component {
-    constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
-        todos: [
-            {id: 1, name: "Shopping", Component: false },
-            {id: 2, name: "Swiming", Component: false },
-            {id: 3, name: "Watch Movie", Component: false },
-            {id: 4, name: "Dinner", Component: false },
-            {id: 5, name: "Sleeping", Component: false }
-        ],
-        message: ""
+      todos: [
+        { id: 1, name: "Shopping", Component: false },
+        { id: 2, name: "Swiming", Component: false },
+        { id: 3, name: "Watch Movie", Component: false },
+        { id: 4, name: "Dinner", Component: false },
+        { id: 5, name: "Sleeping", Component: false }
+      ],
+      message: ""
     };
     //โคตรงง อะไรแว้ !!!!!! 
     this.onChangeMassage = this.onChangeMassage.bind(this);
     this.onSubmitMessage = this.onSubmitMessage.bind(this);
- }
+  }
 
- onChangeMassage(e){
-   this.setState({ message: e.target.value });
- }
+  onChangeMassage(e) {
+    this.setState({ message: e.target.value });
+  }
 
- onSubmitMessage(e) {
-   e.preventDefault(); //ป้องกันการเปลี่ยนหน้า
-   let oldTodos = this.state.todos;
-   let todosLength = this.state.todos.length;
-   let lastId = this.state.todos[todosLength - 1].id;
-   let newMessage = {id: lastId + 1, name: this.state.message, complete: false };
-   oldTodos.push(newMessage);
-   this.setState({ todos: oldTodos});
- }
+  onSubmitMessage(e) {
+    e.preventDefault(); //ป้องกันการเปลี่ยนหน้า
+    let oldTodos = this.state.todos;
+    let todosLength = this.state.todos.length;
+    let lastId = this.state.todos[todosLength - 1].id;
+    let newMessage = { id: lastId + 1, name: this.state.message, complete: false };
+    oldTodos.push(newMessage);
+    this.setState({ todos: oldTodos });
+  }
 
   render() {
     return (
@@ -49,11 +49,11 @@ class App extends Component {
         }}
       >
         <HeaderComponent>
-            TODO LIST ::
+          TODO LIST ::
         </HeaderComponent>
         <List todos={this.state.todos} />
-        <FormSubmit 
-          onChangeMassage={this.onChangeMassage} 
+        <FormSubmit
+          onChangeMassage={this.onChangeMassage}
           onSubmitMessage={this.onSubmitMessage}
         />
       </div>
